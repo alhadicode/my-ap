@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./App.css";
 function App() {
   const [messages, setMessages] = useState([]);
   const [form, setForm] = useState({
@@ -48,44 +48,44 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Contact App 🚀</h1>
+    <div className="container">
+  <h1>Contact App 🚀</h1>
 
-      <form onSubmit={sendMessage}>
-        <input
-          placeholder="Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-        />
+  <form onSubmit={sendMessage}>
+    <input
+      placeholder="Name"
+      value={form.name}
+      onChange={(e) => setForm({ ...form, name: e.target.value })}
+    />
 
-        <input
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-        />
+    <input
+      placeholder="Email"
+      value={form.email}
+      onChange={(e) => setForm({ ...form, email: e.target.value })}
+    />
 
-        <textarea
-          placeholder="Message"
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-        />
+    <textarea
+      placeholder="Message"
+      value={form.message}
+      onChange={(e) => setForm({ ...form, message: e.target.value })}
+    />
 
-        <button type="submit">Send</button>
-      </form>
+    <button type="submit">Send</button>
+  </form>
 
-      <hr />
+  <div className="messages">
+    <h2>Messages</h2>
 
-      <h2>Messages</h2>
-
-      {messages.map((m) => (
-        <div key={m._id}>
-          <p><b>{m.name}</b></p>
-          <p>{m.email}</p>
-          <p>{m.message}</p>
-        </div>
-      ))}
-    </div>
+    {messages.map((m) => (
+      <div className="message-card" key={m._id}>
+        <p><b>{m.name}</b></p>
+        <p>{m.email}</p>
+        <p>{m.message}</p>
+      </div>
+    ))}
+  </div>
+</div>
   );
-}
+);
 
 export default App;
